@@ -8,7 +8,7 @@ function Details() {
   const { id } = useParams();
   const restaurants = useSelector((state)=> state.data.restaurants);
 
-  const currentRes = restaurants.find((res) => res.id == id);
+  const currentRes = restaurants.find((res) => res._id == id);
 
   return (
     <Container>
@@ -16,7 +16,7 @@ function Details() {
         <Row className="mt-3">
           <Col md={8}>
             <Card>
-              <Card.Img variant="top" src={currentRes.photograph} />
+              <Card.Img variant="top" src={process.env.REACT_APP_SERVER_URL + currentRes.photograph} />
               <Card.Body>
                 <Card.Title>{currentRes.name}</Card.Title>
                 <Card.Text>
@@ -51,7 +51,8 @@ function Details() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card>
+
+            {/* <Card>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h2>
@@ -80,7 +81,8 @@ function Details() {
                   Sunday : {currentRes.operating_hours.Sunday}
                 </ListGroup.Item>
               </ListGroup>
-            </Card>
+            </Card> */}
+            
           </Col>
         </Row>
       )}

@@ -15,6 +15,7 @@ import Login from './components/Login';
 import ProtectedRoute from './utils/ProtectedRoute';
 import Users from './components/Users';
 import User from './components/User';
+import instance from './axios';
 
 
 function App() {
@@ -26,11 +27,27 @@ function App() {
   useEffect(()=> {
     // componentDidMount()
 
-    fetch("/restaurants.json")
-    .then((data) => data.json())
-    .then((res) => dispatch(getRestaurants(res.restaurants)));
+    // fetch("/restaurants.json")
+    // .then((data) => data.json())
+    // .then((res) => dispatch(getRestaurants(res.restaurants)));
+
+    const fetchRestaurants = async ()=>{
+      try {
+        const res = await instance.get('/api/v1/restaurants')
+
+        if (res.data.success) {
+          dispatch(getRestaurants(res.data.restaurants));
+        }else{
+          console.log(res.data.message);
+        }
+
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
 
     // return ("") // componentWillUnmount()
+    fetchRestaurants();
 
 
   }, [dispatch]); // dependancy array --> componentDidUpdate()

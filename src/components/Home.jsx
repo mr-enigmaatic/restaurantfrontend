@@ -17,7 +17,7 @@ function Home() {
           restaurants.map((res, index) => (
             <Col md={4} className="mt-3" key={index}>
               <Card>
-                <Card.Img variant="top" src={res.photograph} />
+                <Card.Img variant="top" src={process.env.REACT_APP_SERVER_URL + res.photograph} />
                 <Card.Body>
                   <Card.Title>{res.name}</Card.Title>
                   <Card.Text>
@@ -27,7 +27,7 @@ function Home() {
                     <strong>Cuisine Type: </strong>
                     {res.cuisine_type}
                   </Card.Text>
-                  <Button as= {Link} to = {`/details/${res.id}`} variant="primary">More Info</Button>
+                  <Button as= {Link} to = {`/details/${res._id}`} variant="primary">More Info</Button>
                 </Card.Body>
               </Card>
             </Col>
