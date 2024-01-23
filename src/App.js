@@ -16,6 +16,7 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import Users from './components/Users';
 import User from './components/User';
 import instance from './axios';
+// import './bootstrap.min.css'
 
 
 function App() {
