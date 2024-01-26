@@ -4,6 +4,7 @@ import { Button, Col, Container, Form, Row,} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import instance from '../axios';
 
 function Register() {
 
@@ -21,7 +22,7 @@ function Register() {
             e.stopPropagation();
         }else{
             try {
-                let res = await axios.post('http://localhost:5000/api/v1/register', {
+                let res = await instance.post('/api/v1/register', {
                     fullname:userFullName,
                     email:userEmail,
                     password:userPassword

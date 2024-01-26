@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDelete from './UserDelete';
+import instance from '../axios';
 
 function Users() {
 
@@ -17,7 +18,7 @@ function Users() {
 
             try {
 
-                const res = await axios.get("http://localhost:5000/api/v1/users",{withCredentials:true});
+                const res = await instance.get("/api/v1/users",{withCredentials:true});
                 setUsers(res.data.users);
 
             } catch (error) {

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
 import { authUserSuccess } from '../redux/userAuth';
+import instance from '../axios';
 
 
 function Login() {
@@ -27,7 +28,7 @@ function Login() {
     } else {
 
       try {
-        let res = await axios.post("http://localhost:5000/api/v1/login", {
+        let res = await instance.post("/api/v1/login", {
           email: userEmail,
           password: userPassword,
         },{
