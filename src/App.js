@@ -16,6 +16,7 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import Users from './components/Users';
 import User from './components/User';
 import instance from './axios';
+import Restaurants from './components/Restaurants';
 // import './bootstrap.min.css'
 
 
@@ -71,6 +72,7 @@ function App() {
         <Route path='/add' element={<ProtectedRoute isAuthenticated={isAuthenticated}> <AddRestaurant/> </ProtectedRoute>} />
         <Route path='/users' element={<ProtectedRoute isAuthenticated={isAuthenticated}> <Users/> </ProtectedRoute>} />
         <Route path='/user/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated}> <User/> </ProtectedRoute>} />
+        <Route path='/restaurants' element={<ProtectedRoute isAuthenticated={isAuthenticated}> <Restaurants/> </ProtectedRoute>} />
       </Routes>
       <Footer/>
     </Router>

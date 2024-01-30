@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import instance from '../axios';
 import { useNavigate } from 'react-router-dom';
+import { addRestaurant } from '../redux/restaurantSlice';
+import { useDispatch } from 'react-redux';
 
 
 function AddRestaurant() {
@@ -15,6 +17,7 @@ function AddRestaurant() {
     const [restaurantPhotograph, setRestaurantPhotograph] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const [validated, setvalidated] = useState(false); 
@@ -68,6 +71,8 @@ function AddRestaurant() {
                         progress: undefined,
                         theme: "colored",
                         });
+
+                        dispatch(addRestaurant(res.data.restaurant));
 
                         await new Promise((resolve) => setTimeout(resolve, 2000));
 
